@@ -4,20 +4,19 @@
       <div class="table-responsive"></div>
       <table class="table table-bordered table-hover">
         <thead>
-          <th>ID</th>
           <th>Name</th>
           <th>Course</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Actions</th>
           <tr v-for="student in students" :key="student.id">
-            <td>{{ student.id }}</td>
+            <input type="hidden" value={{student.id}}>
             <td>{{ student.name }}</td>
             <td>{{ student.course }}</td>
             <td>{{ student.email }}</td>
             <td>{{ student.phone }}</td>
             <td>
-              <router-link :to="{ path: student.id + '/edit' }" class="btn btn-warning">
+              <router-link :to="{ path: '/edit/' + student.id }" class="btn btn-warning">
                 <i class="fa-solid fa-edit"></i>
               </router-link> &nbsp;
               <button class="btn btn-danger" v-on:click="deleted(student.id, student.name)">
@@ -35,7 +34,7 @@
 
 <script>
 import axios from 'axios';
-import {confirmation} from '../functions';
+import { confirmation } from '../functions';
 export default {
   data() {
 
